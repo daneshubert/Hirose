@@ -9,10 +9,7 @@
             margin: 0; background: var(--bg); color: #e6edf3; font-family: sans-serif; 
             display: grid; grid-template-rows: 60px 1fr 35px; height: 100vh; overflow: hidden; 
         }
-        .header { 
-            background: #000; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; 
-            border-bottom: 2px solid var(--hirose-blue); 
-        }
+        .header { background: #000; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--hirose-blue); }
         .header img { height: 32px; }
         .main { display: grid; grid-template-columns: 1fr 400px; gap: 20px; padding: 20px; align-items: center; }
         .media-frame { width: 100%; aspect-ratio: 16 / 9; border: 1px solid rgba(91,149,241,0.3); background: #000; border-radius: 4px; }
@@ -23,16 +20,16 @@
 <body>
     <div class="header">
         <img src="Hirose Logo Stacked.png">
-        <div style="color:#80B341; font-size:11px; font-weight:800;">● COMMAND_DASHBOARD // REV_09</div>
+        <div style="color:#80B341; font-size:11px; font-weight:800;">● COMMAND_DASHBOARD // REV_10</div>
     </div>
     <div class="main">
         <div>
             <div style="font-size:10px; color:var(--hirose-blue); margin-bottom:8px; text-transform:uppercase;">Featured Media Viewport (16:9)</div>
-            <div class="media-frame"></div> <!-- LAYER VIDEO HERE -->
+            <div class="media-frame"></div>
         </div>
         <div class="sidebar">
             <div class="sidebar-header">GLOBAL MARKET INTELLIGENCE</div>
-            <div class="tradingview-widget-container" id="tv-sidebar-rev9">
+            <div class="tradingview-widget-container">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
                 {
@@ -50,7 +47,6 @@
     </div>
     <div style="background:#000;">
         <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
             { "symbols": [{"proName":"OTC:HROEY","title":"HIROSE"},{"proName":"CAPITALCOM:COPPER","title":"COPPER"}], "colorTheme":"dark","isTransparent":true, "locale": "en" }
             </script>
