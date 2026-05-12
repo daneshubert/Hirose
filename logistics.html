@@ -2,113 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIROSE GLOBAL LOGISTICS</title>
+    <title>HIROSE // LOGISTICS</title>
     <style>
-        body {
-            margin: 0; padding: 0;
-            background-color: #050a14;
-            color: #ffffff;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            overflow: hidden;
-            height: 100vh;
-            display: grid;
-            grid-template-rows: 80px 1fr 60px; 
-        }
-
-        .header {
-            background-color: #000;
-            padding: 0 40px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 4px solid #5B95F1; 
-        }
-        .header img { height: 45px; }
-        .status-tag { color: #80B341; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; }
-
-        .main-grid {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 15px;
-            padding: 15px;
-            background: #111;
-        }
-
-        .left-column { display: flex; flex-direction: column; gap: 10px; }
-        
-        .clock-card {
-            background: #050a14;
-            border: 1px solid rgba(91, 149, 241, 0.2);
-            padding: 20px;
-            border-radius: 4px;
-        }
-        .city-name { color: #5B95F1; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .time-display { font-size: 32px; font-weight: bold; color: #fff; margin-top: 5px; }
-
-        .map-panel {
-            background: #050a14;
-            border: 1px solid rgba(91, 149, 241, 0.2);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        iframe { border: none; width: 100%; height: 100%; }
-        .footer { background: #000; display: flex; align-items: center; }
+        body { margin: 0; background: #050a14; color: white; font-family: sans-serif; display: grid; grid-template-rows: 60px 1fr 35px; height: 100vh; overflow: hidden; }
+        .header { background: #000; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #5B95F1; }
+        .main { display: grid; grid-template-columns: 320px 1fr; gap: 20px; padding: 20px; align-items: center; }
+        .clock-card { background: #11141b; border: 1px solid #222; padding: 15px; border-radius: 4px; margin-bottom: 10px; }
+        .media-frame { width: 100%; aspect-ratio: 16 / 9; border: 1px solid #5B95F1; background: #000; }
     </style>
 </head>
 <body>
-
-    <div class="header">
-        <img src="Hirose Logo Stacked.png" alt="Hirose">
-        <div class="status-tag">● LOGISTICS NETWORK: OPTIMAL</div>
-    </div>
-
-    <div class="main-grid">
-        <div class="left-column">
-            <div class="clock-card">
-                <div class="city-name">Chicago (HQ)</div>
-                <div id="chi" class="time-display">--:-- --</div>
-            </div>
-            <div class="clock-card">
-                <div class="city-name">Tokyo</div>
-                <div id="tok" class="time-display">--:-- --</div>
-            </div>
-            <div class="clock-card">
-                <div class="city-name">Amsterdam</div>
-                <div id="ams" class="time-display">--:-- --</div>
-            </div>
+    <div class="header"><img src="Hirose Logo Stacked.png"><div style="color:#80B341; font-size:11px;">● LOGISTICS NETWORK: OPTIMAL</div></div>
+    <div class="main">
+        <div class="clocks">
+            <div class="clock-card"><div style="color:#5B95F1; font-size:10px;">CHICAGO</div><div id="chi" style="font-size:24px; font-weight:bold;">--:--</div></div>
+            <div class="clock-card"><div style="color:#5B95F1; font-size:10px;">TOKYO</div><div id="tok" style="font-size:24px; font-weight:bold;">--:--</div></div>
+            <div class="clock-card"><div style="color:#5B95F1; font-size:10px;">AMSTERDAM</div><div id="ams" style="font-size:24px; font-weight:bold;">--:--</div></div>
         </div>
-
-        <div class="map-panel">
-            <!-- Windy.com Global Visualization -->
-            <iframe src="https://embed.windy.com/embed2.html?lat=21.943&lon=117.422&zoom=3&level=surface&overlay=wind&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0F&radarRange=-1" frameborder="0"></iframe>
+        <div>
+            <div style="font-size:10px; color:#5B95F1; margin-bottom:8px;">GLOBAL CONNECTIVITY (16:9)</div>
+            <div class="media-frame"></div> <!-- LAYER WINDY OR MAP VIDEO HERE -->
         </div>
     </div>
-
-    <div class="footer">
-        <div class="tradingview-widget-container" style="width: 100%;">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-            {
-                "symbols": [
-                    { "proName": "OTC:HROEY", "title": "HIROSE AMERICAS" },
-                    { "proName": "NYSE:UPS", "title": "UPS" },
-                    { "proName": "NYSE:FDX", "title": "FEDEX" },
-                    { "proName": "NYSE:MAERSK_A", "title": "MAERSK" }
-                ],
-                "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "en"
-            }
-            </script>
-        </div>
-    </div>
-
+    <div style="background:#000;"><script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    { "symbols": [{"proName":"NYSE:UPS","title":"UPS"},{"proName":"NYSE:FDX","title":"FEDEX"}], "colorTheme":"dark","isTransparent":true }
+    </script></div>
     <script>
-        function updateClocks() {
-            const options = { hour: '2-digit', minute: '2-digit', hour12: true };
-            document.getElementById('chi').innerText = new Date().toLocaleTimeString('en-US', { ...options, timeZone: 'America/Chicago' });
-            document.getElementById('tok').innerText = new Date().toLocaleTimeString('en-US', { ...options, timeZone: 'Asia/Tokyo' });
-            document.getElementById('ams').innerText = new Date().toLocaleTimeString('en-US', { ...options, timeZone: 'Europe/Amsterdam' });
+        function up(){
+            const o={hour:'2-digit',minute:'2-digit',hour12:true};
+            document.getElementById('chi').innerText=new Date().toLocaleTimeString('en-US',{...o,timeZone:'America/Chicago'});
+            document.getElementById('tok').innerText=new Date().toLocaleTimeString('en-US',{...o,timeZone:'Asia/Tokyo'});
+            document.getElementById('ams').innerText=new Date().toLocaleTimeString('en-US',{...o,timeZone:'Europe/Amsterdam'});
         }
-        setInterval(updateClocks, 1000); 
-        updateClocks();
+        setInterval(up,1000); up();
     </script>
 </body>
 </html>
