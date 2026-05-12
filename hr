@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIROSE // TEAM UPDATES</title>
+    <style>
+        :root {
+            --hirose-blue: #5B95F1;
+            --bg-dark: #0a0c10;
+            --card-bg: #161b22;
+            --text-main: #f0f6fc;
+            --text-dim: #8b949e;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: grid;
+            grid-template-rows: 90px 1fr 60px;
+        }
+
+        /* Warm, Human Header */
+        .header {
+            background-color: #000;
+            padding: 0 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 3px solid var(--hirose-blue);
+        }
+        .header img { height: 45px; }
+        .welcome-msg { font-size: 18px; font-weight: 300; color: var(--hirose-blue); }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; /* Announcement text vs Media box */
+            gap: 30px;
+            padding: 30px;
+            align-items: start;
+        }
+
+        /* Announcement Cards */
+        .announcement-stack { display: flex; flex-direction: column; gap: 20px; }
+        
+        .card {
+            background: var(--card-bg);
+            border-left: 5px solid var(--hirose-blue);
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .card-date { font-size: 12px; color: var(--hirose-blue); font-weight: bold; margin-bottom: 5px; }
+        .card-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+        .card-body { font-size: 15px; color: var(--text-dim); line-height: 1.5; }
+
+        /* Dedicated 16:9 Spotlight Area */
+        .spotlight-container {
+            display: flex; flex-direction: column; gap: 15px;
+        }
+        .media-box-169 {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border: 1px solid rgba(91, 149, 241, 0.3);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .spotlight-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Static Human Footer */
+        .footer {
+            background: #000;
+            display: flex; justify-content: center; align-items: center;
+            border-top: 1px solid #222;
+        }
+        .quote { font-style: italic; color: var(--text-dim); font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="Hirose Logo Stacked.png" alt="Hirose">
+        <div class="welcome-msg">Human Resources // <strong>People & Culture</strong></div>
+    </div>
+
+    <div class="main-layout">
+        <!-- LEFT: HR ANNOUNCEMENTS -->
+        <div class="announcement-stack">
+            <div class="card">
+                <div class="card-date">MAY 15, 2026</div>
+                <div class="card-title">Summer Internship Kickoff</div>
+                <div class="card-body">Please join us in welcoming our summer cohort starting next week. Orientation will be held in the main conference room at 9:00 AM.</div>
+            </div>
+            <div class="card" style="border-left-color: #80B341;">
+                <div class="card-date">MAY 22, 2026</div>
+                <div class="card-title">Employee Appreciation Lunch</div>
+                <div class="card-body">Catered lunch will be provided in the breakroom to celebrate our Q1 milestones. See you there!</div>
+            </div>
+        </div>
+
+        <!-- RIGHT: THE 16:9 MEDIA BOX -->
+        <div class="spotlight-container">
+            <div class="spotlight-label">Employee Spotlight / Event Media</div>
+            <div class="media-box-169">
+                <!-- LAYER YOUR 16:9 PHOTO OR VIDEO WIDGET HERE IN ONSIGNAGE -->
+                <div style="color: #333; font-size: 11px;">[ 16:9 MEDIA CONTENT AREA ]</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="quote">"Connecting people, technology, and the future."</div>
+    </div>
+
+</body>
+</html>
