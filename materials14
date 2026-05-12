@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HIROSE // MATERIALS LAB</title>
+    <style>
+        :root { --cyan: #00f2ff; --bg: #0a0c10; --panel: #11141b; }
+        body { 
+            margin: 0; padding: 0; background: var(--bg); color: #e6edf3; font-family: 'Courier New', monospace; 
+            display: grid; grid-template-rows: 60px 1fr 35px; height: 100vh; overflow: hidden; 
+        }
+        .header { background: #000; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--cyan); }
+        .header img { height: 32px; filter: grayscale(1) brightness(1.5); }
+        .main { display: grid; grid-template-columns: 420px 1fr; gap: 20px; padding: 20px; }
+        
+        .sidebar { background: var(--panel); border: 1px solid rgba(0,242,255,0.1); border-radius: 4px; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; padding-bottom: 10px; }
+        .sidebar-header { padding: 12px; font-size: 11px; background: rgba(0,242,255,0.08); border-bottom: 1px solid rgba(0,242,255,0.1); color: var(--cyan); font-weight: bold; margin-bottom: 5px; }
+        
+        .blueprint-viewport { background-color: #0d1117; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+        .media-box-large { width: 95%; aspect-ratio: 16 / 9; background: #000; border: 1px solid var(--cyan); box-shadow: 0 0 50px rgba(0, 242, 255, 0.1); }
+        
+        /* Clean up widget containers */
+        .tradingview-widget-container { height: auto !important; margin-bottom: 2px; border-bottom: 1px solid rgba(255,255,255,0.02); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="Hirose Logo Stacked.png">
+        <div style="color:var(--cyan); font-size:11px; font-weight:800;">● MATERIAL_ANALYSIS // V_14_STACK</div>
+    </div>
+
+    <div class="main">
+        <div class="sidebar">
+            <div class="sidebar-header">VERIFIED MATERIAL COMMODITIES</div>
+            <!-- STACKING INDIVIDUAL WIDGETS REMOVES THE DEFAULTING LOGIC -->
+            <div class="tradingview-widget-container"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>{ "symbol": "CAPITALCOM:COPPER", "width": "100%", "colorTheme": "dark", "isTransparent": true, "locale": "en" }</script></div>
+            <div class="tradingview-widget-container"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>{ "symbol": "CAPITALCOM:NICKEL", "width": "100%", "colorTheme": "dark", "isTransparent": true, "locale": "en" }</script></div>
+            <div class="tradingview-widget-container"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>{ "symbol": "CAPITALCOM:ALUMINIUM", "width": "100%", "colorTheme": "dark", "isTransparent": true, "locale": "en" }</script></div>
+            <div class="tradingview-widget-container"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>{ "symbol": "AMEX:REMX", "width": "100%", "colorTheme": "dark", "isTransparent": true, "locale": "en" }</script></div>
+        </div>
+
+        <div class="blueprint-viewport">
+            <div class="media-box-large">
+                <div style="font-size: 9px; color: var(--cyan); padding: 10px; text-transform: uppercase;">[ LARGE VIEWPORT: ACTIVE ]</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background:#000;">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        { "symbols": [{"proName":"CAPITALCOM:COPPER","title":"COPPER"},{"proName":"CAPITALCOM:NICKEL","title":"NICKEL"},{"proName":"AMEX:REMX","title":"RARE EARTH"}], "colorTheme":"dark","isTransparent":true, "locale": "en" }
+        </script>
+    </div>
+</body>
+</html>
