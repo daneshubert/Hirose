@@ -1,111 +1,95 @@
-<!-- Save as engineering.html -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"><title>HIROSE // ENGINEERING</title>
-    <style>
-        body { margin: 0; background: #0b0e14; color: #e0e0e0; font-family: 'Courier New', monospace; display: grid; grid-template-rows: 60px 1fr 40px; height: 100vh; overflow: hidden; }
-        .header { background: #000; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #00f2ff; }
-        .main { display: grid; grid-template-columns: 400px 1fr; gap: 1px; background: #1a1f26; }
-        .sidebar { background: #0b0e14; border-right: 1px solid rgba(0,242,255,0.2); overflow: hidden; }
-        .media-viewport { background: radial-gradient(circle, #131821 1px, transparent 1px); background-size: 30px 30px; display: flex; align-items: center; justify-content: center; }
-        .media-box { width: 90%; aspect-ratio: 16 / 9; border: 1px solid rgba(0,242,255,0.3); }
-    </style>
-</head>
-<body>
-    <div class="header"><img src="Hirose Logo Stacked.png" height="35"><div style="color:#00f2ff">SPEC-01 // MATERIAL ANALYSIS</div></div>
-    <div class="main">
-        <div class="sidebar">
-            <div style="padding:10px;color:#00f2ff;font-size:12px;background:rgba(0,242,255,0.1)">CRITICAL MINERALS</div>
-            <div class="tradingview-widget-container" style="height:100%;">
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-                { "symbols": [
-                    { "proName": "CAPITALCOM:COPPER", "title": "Copper" },
-                    { "proName": "CAPITALCOM:NICKEL", "title": "Nickel" },
-                    { "proName": "CAPITALCOM:ALUMINIUM", "title": "Aluminum" },
-                    { "proName": "AMEX:REMX", "title": "Rare Earth" },
-                    { "proName": "OTC:HROEY", "title": "Hirose (ADR)" }
-                ], "colorTheme": "dark", "isTransparent": true }
-                </script>
-            </div>
-        </div>
-        <div class="media-viewport">
-            <div class="media-box"></div> <!-- LAYER 16:9 TECH VIDEO HERE -->
-        </div>
-    </div>
-    <div style="background:#000;"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async></script></div>
-</body>
-</html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIROSE MATERIALS LAB // SPEC-01</title>
+    <title>HIROSE // MATERIALS LAB</title>
     <style>
+        :root {
+            --cyan-tech: #00f2ff;
+            --bg-dark: #0a0c10;
+            --panel-bg: #11141b;
+            --text-dim: #7d8590;
+        }
+
         body {
             margin: 0; padding: 0;
-            background-color: #0b0e14;
-            color: #e0e0e0;
+            background-color: var(--bg-dark);
+            color: #e6edf3;
             font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
             height: 100vh;
             display: grid;
-            grid-template-rows: 60px 1fr 40px; 
+            grid-template-rows: 60px 1fr 35px;
         }
 
+        /* Lean Technical Header */
         .header {
             background-color: #000;
             padding: 0 30px;
             display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid #00f2ff;
+            border-bottom: 2px solid var(--cyan-tech);
         }
-        .header img { height: 35px; filter: grayscale(1) brightness(2); }
-        .spec-label { font-size: 12px; color: #00f2ff; letter-spacing: 3px; font-weight: bold; }
+        .header img { height: 32px; filter: grayscale(1) brightness(1.5); }
+        .spec-label { font-size: 11px; color: var(--cyan-tech); letter-spacing: 2px; }
 
-        .main-container {
+        .main-layout {
             display: grid;
-            grid-template-columns: 450px 1fr; 
+            grid-template-columns: 380px 1fr;
             gap: 1px;
-            background: #1a1f26;
+            background: #21262d; /* Grid line separator */
         }
 
-        .material-sidebar {
-            background: #0b0e14;
+        /* Sidebar: Material Data Only */
+        .sidebar {
+            background: var(--bg-dark);
             display: flex; flex-direction: column;
-            border-right: 1px solid rgba(0, 242, 255, 0.2);
             overflow: hidden;
         }
-
         .section-header {
-            background: rgba(0, 242, 255, 0.1);
+            background: rgba(0, 242, 255, 0.05);
             padding: 12px 20px;
-            font-size: 12px;
-            color: #00f2ff;
-            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+            font-size: 11px;
+            color: var(--cyan-tech);
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
             text-transform: uppercase;
         }
 
+        /* Blueprint Zone: 16:9 Media Anchor */
         .blueprint-zone {
-            background: radial-gradient(circle, #131821 1px, transparent 1px);
-            background-size: 30px 30px;
-            display: flex; align-items: center; justify-content: center;
+            background-color: #0d1117;
+            background-image: radial-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 25px 25px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 20px;
         }
+        .media-box-169 {
+            width: 100%;
+            max-width: 1150px;
+            aspect-ratio: 16 / 9;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            background: rgba(0,0,0,0.6);
+            position: relative;
+        }
+        .media-label { font-size: 9px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
 
-        .footer { background: #000; display: flex; align-items: center; border-top: 1px solid #333; }
+        /* Commodities Only Footer */
+        .footer { background: #000; display: flex; align-items: center; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <img src="Hirose Logo Stacked.png" alt="Hirose">
-        <div class="spec-label">MATERIAL ANALYSIS // SPECIFICATION DECK</div>
+        <div class="spec-label">COMMODITY ANALYSIS // MATERIAL_SPEC_01</div>
     </div>
 
-    <div class="main-container">
-        <!-- LEFT: CUSTOM MATERIAL LIST -->
-        <div class="material-sidebar">
-            <div class="section-header">Critical Engineering Minerals</div>
-            <div class="tradingview-widget-container" style="height:100%;width:100%">
+    <div class="main-layout">
+        <!-- LEFT: PURIFIED MATERIALS LIST -->
+        <div class="sidebar">
+            <div class="section-header">Industrial Mineral Indices</div>
+            <div class="tradingview-widget-container" style="height:100%;">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
                 {
@@ -114,10 +98,9 @@
                     { "proName": "CAPITALCOM:NICKEL", "title": "Nickel (Ni)" },
                     { "proName": "CAPITALCOM:ALUMINIUM", "title": "Aluminum (Al)" },
                     { "proName": "AMEX:REMX", "title": "Rare Earth (ETF)" },
-                    { "proName": "NASDAQ:SIMO", "title": "Silicon (Proxy)" },
-                    { "proName": "OTC:HROEY", "title": "Hirose (ADR)" }
+                    { "proName": "NASDAQ:SIMO", "title": "Silicon (Proxy)" }
                   ],
-                  "showSymbolLogo": true,
+                  "showSymbolLogo": false,
                   "colorTheme": "dark",
                   "isTransparent": true,
                   "locale": "en"
@@ -126,11 +109,11 @@
             </div>
         </div>
 
-        <!-- RIGHT: BLANK SPACE FOR YOUR VIDEOS -->
+        <!-- RIGHT: THE 16:9 BLUEPRINT ZONE -->
         <div class="blueprint-zone">
-            <div style="color: rgba(0, 242, 255, 0.15); font-size: 11px; text-align: center;">
-                [ VIEWPORT 01: ACTIVE ]<br>
-                LAYER COMPONENT MOTION GRAPHICS HERE
+            <div class="media-label">Material Visualization Viewport (16:9 Layer)</div>
+            <div class="media-box-169">
+                <!-- LAYER YOUR ONSIGNAGE COMPONENT VIDEO HERE -->
             </div>
         </div>
     </div>
@@ -142,134 +125,14 @@
                 "symbols": [
                     { "proName": "CAPITALCOM:COPPER", "title": "COPPER" },
                     { "proName": "CAPITALCOM:NICKEL", "title": "NICKEL" },
-                    { "proName": "CAPITALCOM:ALUMINIUM", "title": "ALUMINUM" },
                     { "proName": "AMEX:REMX", "title": "RARE EARTH" },
-                    { "proName": "NASDAQ:SIMO", "title": "SILICON" },
-                    { "proName": "OTC:HROEY", "title": "HIROSE" }
+                    { "proName": "CAPITALCOM:ALUMINIUM", "title": "ALUMINUM" },
+                    { "proName": "NASDAQ:SIMO", "title": "SILICON" }
                 ],
                 "colorTheme": "dark",
                 "isTransparent": true,
                 "displayMode": "adaptive",
                 "locale": "en"
-            }
-            </script>
-        </div>
-    </div>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIROSE MATERIALS LAB // SPEC-01</title>
-    <style>
-        body {
-            margin: 0; padding: 0;
-            background-color: #0b0e14;
-            color: #e0e0e0;
-            font-family: 'Courier New', Courier, monospace; /* Technical feel */
-            overflow: hidden;
-            height: 100vh;
-            display: grid;
-            grid-template-rows: 60px 1fr 40px; 
-        }
-
-        /* Technical Header */
-        .header {
-            background-color: #000;
-            padding: 0 30px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid #00f2ff; /* Cyan accent */
-        }
-        .header img { height: 35px; filter: grayscale(1) brightness(2); }
-        .spec-label { font-size: 12px; color: #00f2ff; letter-spacing: 3px; font-weight: bold; }
-
-        .main-container {
-            display: grid;
-            grid-template-columns: 400px 1fr; /* Sidebar for specs, large area for your video */
-            gap: 1px;
-            background: #1a1f26; /* Grid lines */
-        }
-
-        /* Sidebar with Material Data */
-        .material-sidebar {
-            background: #0b0e14;
-            display: flex; flex-direction: column;
-            border-right: 1px solid rgba(0, 242, 255, 0.2);
-        }
-
-        .section-header {
-            background: rgba(0, 242, 255, 0.1);
-            padding: 10px 20px;
-            font-size: 11px;
-            color: #00f2ff;
-            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
-        }
-
-        /* The Blueprint Area - Blank for your layers */
-        .blueprint-zone {
-            background: radial-gradient(circle, #131821 1px, transparent 1px);
-            background-size: 30px 30px; /* Blueprint grid effect */
-            display: flex; align-items: center; justify-content: center;
-            position: relative;
-        }
-
-        .footer { background: #000; display: flex; align-items: center; border-top: 1px solid #333; }
-    </style>
-</head>
-<body>
-
-    <div class="header">
-        <img src="Hirose Logo Stacked.png" alt="Hirose">
-        <div class="spec-label">MATERIAL ANALYSIS // SPECIFICATION DECK</div>
-    </div>
-
-    <div class="main-container">
-        <!-- LEFT: MATERIAL TICKERS -->
-        <div class="material-sidebar">
-            <div class="section-header">INDUSTRIAL COMMODITIES INDEX</div>
-            <div class="tradingview-widget-container" style="height:100%;width:100%">
-                <div class="tradingview-widget-container__widget"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                {
-                    "colorTheme": "dark", "showChart": false, "locale": "en", "width": "100%", "height": "100%", "transparent": true,
-                    "symbolsGroups": [
-                        { "name": "Core Metals", "symbols": [
-                            { "name": "COMEX:HG1!", "displayName": "Copper" },
-                            { "name": "TVC:NICKEL", "displayName": "Nickel" },
-                            { "name": "NYMEX:AL1!", "displayName": "Aluminum" }
-                        ]},
-                        { "name": "Strategic Materials", "symbols": [
-                            { "name": "AMEX:REMX", "displayName": "Rare Earths (ETF)" },
-                            { "name": "NASDAQ:SIMO", "displayName": "Silicon Proxy" },
-                            { "name": "OTC:HROEY", "displayName": "Hirose (ADR)" }
-                        ]}
-                    ]
-                }
-                </script>
-            </div>
-        </div>
-
-        <!-- RIGHT: BLANK "BLUEPRINT" SPACE FOR YOUR VIDEOS -->
-        <div class="blueprint-zone">
-            <!-- This grid background makes it look intentionally like a CAD/Blueprint space -->
-            <div style="color: rgba(0, 242, 255, 0.1); font-size: 10px;">[ AUTO-GENERATED SCHEMATIC VIEWPORT ]</div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <div class="tradingview-widget-container" style="width: 100%;">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-            {
-                "symbols": [
-                    { "proName": "OTC:HROEY", "title": "HIROSE" },
-                    { "proName": "COMEX:HG1!", "title": "COPPER" },
-                    { "proName": "TVC:NICKEL", "title": "NICKEL" },
-                    { "proName": "AMEX:REMX", "title": "RARE EARTH" },
-                    { "proName": "NYMEX:AL1!", "title": "ALUMINUM" }
-                ],
-                "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "en"
             }
             </script>
         </div>
