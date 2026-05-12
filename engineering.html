@@ -9,16 +9,14 @@
             margin: 0; background: var(--bg); color: #e6edf3; font-family: 'Courier New', monospace; 
             display: grid; grid-template-rows: 60px 1fr 35px; height: 100vh; overflow: hidden; 
         }
-        
         .header { 
             background: #000; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; 
             border-bottom: 2px solid var(--cyan); 
         }
         .header img { height: 32px; filter: grayscale(1) brightness(1.5); }
-        
         .main { display: grid; grid-template-columns: 420px 1fr; gap: 20px; padding: 20px; }
         
-        /* SIDEBAR: MARKET QUOTES (STRICT LIST) */
+        /* CLEAN SIDEBAR - NO TABS */
         .sidebar { 
             background: var(--panel); border: 1px solid rgba(0,242,255,0.1); border-radius: 4px; 
             display: flex; flex-direction: column; overflow: hidden; 
@@ -30,24 +28,18 @@
             background-size: 25px 25px; border: 1px solid #222; position: relative; border-radius: 4px; 
             display: flex; align-items: center; justify-content: center;
         }
-
-        /* MODULAR 16:9 MEDIA FRAME */
         .media-frame { 
             position: absolute; bottom: 20px; right: 20px; width: 450px; aspect-ratio: 16 / 9; 
             background: #000; border: 1px solid var(--cyan); box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
         }
-        .media-label { font-size: 9px; color: var(--cyan); padding: 5px; text-transform: uppercase; }
     </style>
 </head>
 <body>
-
     <div class="header">
         <img src="Hirose Logo Stacked.png">
-        <div style="color:var(--cyan); font-size:11px;">MATERIAL ANALYSIS // SPEC_REV_05</div>
+        <div style="color:var(--cyan); font-size:11px;">MATERIAL ANALYSIS // SPEC_REV_06</div>
     </div>
-
     <div class="main">
-        <!-- SIDEBAR: DATA ONLY -->
         <div class="sidebar">
             <div class="sidebar-header">CRITICAL ENGINEERING MINERALS</div>
             <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
@@ -61,25 +53,16 @@
                     { "proName": "AMEX:REMX", "title": "Rare Earth (ETF)" },
                     { "proName": "NASDAQ:SIMO", "title": "Silicon (Proxy)" }
                   ],
-                  "showSymbolLogo": false,
-                  "colorTheme": "dark",
-                  "isTransparent": true,
-                  "locale": "en"
+                  "showSymbolLogo": false, "colorTheme": "dark", "isTransparent": true, "locale": "en"
                 }
                 </script>
             </div>
         </div>
-
-        <!-- BLUEPRINT ZONE WITH MODULAR MEDIA -->
         <div class="blueprint">
             <div style="color: rgba(0, 242, 255, 0.1); font-size: 11px;">[ SCHEMATIC VIEWPORT ACTIVE ]</div>
-            <div class="media-frame">
-                <div class="media-label">Featured Media (16:9)</div>
-                <!-- SNAP YOUR ONSIGNAGE VIDEO HERE -->
-            </div>
+            <div class="media-frame"></div> <!-- LAYER VIDEO HERE -->
         </div>
     </div>
-
     <div style="background:#000;">
         <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
@@ -88,17 +71,12 @@
                 "symbols": [
                     { "proName": "CAPITALCOM:COPPER", "title": "COPPER" },
                     { "proName": "CAPITALCOM:NICKEL", "title": "NICKEL" },
-                    { "proName": "AMEX:REMX", "title": "RARE EARTH" },
-                    { "proName": "CAPITALCOM:ALUMINIUM", "title": "ALUMINUM" }
+                    { "proName": "AMEX:REMX", "title": "RARE EARTH" }
                 ],
-                "colorTheme": "dark",
-                "isTransparent": true,
-                "displayMode": "adaptive",
-                "locale": "en"
+                "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "en"
             }
             </script>
         </div>
     </div>
-
 </body>
 </html>
