@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HIROSE // COMMAND CENTER</title>
+    <style>
+        :root { --hirose-blue: #5B95F1; --bg: #0a0c10; --panel: #11141b; }
+        body { margin: 0; background: var(--bg); color: #e6edf3; font-family: sans-serif; display: grid; grid-template-rows: 60px 1fr 35px; height: 100vh; overflow: hidden; }
+        .header { background: #000; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--hirose-blue); }
+        .header img { height: 32px; }
+        .main { display: grid; grid-template-columns: 1fr 400px; gap: 20px; padding: 20px; align-items: center; }
+        .media-frame { width: 100%; aspect-ratio: 16 / 9; border: 1px solid rgba(91,149,241,0.3); background: #000; border-radius: 4px; }
+        .sidebar { background: var(--panel); height: 100%; border: 1px solid #222; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; padding: 10px; }
+        .sidebar-header { padding: 5px 0 10px 0; font-size: 11px; color: var(--hirose-blue); font-weight: bold; border-bottom: 1px solid #222; margin-bottom: 10px; }
+        .tradingview-widget-container { min-height: 65px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="Hirose Logo Stacked.png">
+        <div style="color:#80B341; font-size:11px; font-weight:800;">● COMMAND_DASHBOARD // V_14_STACK</div>
+    </div>
+    <div class="main">
+        <div>
+            <div style="font-size:10px; color:var(--hirose-blue); margin-bottom:8px;">FEATURED MEDIA (16:9)</div>
+            <div class="media-frame"></div>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-header">VERIFIED MARKET INTELLIGENCE</div>
+            <!-- INDEPENDENT STACK -->
+            <div class="tradingview-widget-container"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>{ "symbol": "OTC:HROEY", "colorTheme": "dark", "isTransparent": true, "locale": "en" }</script></div>
+            <div class="tradingview-widget-container"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>{ "symbol": "CAPITALCOM:COPPER", "colorTheme": "dark", "isTransparent": true, "locale": "en" }</script></div>
+            <div class="tradingview-widget-container"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>{ "symbol": "NASDAQ:NVDA", "colorTheme": "dark", "isTransparent": true, "locale": "en" }</script></div>
+            <div class="tradingview-widget-container"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>{ "symbol": "NASDAQ:AAPL", "colorTheme": "dark", "isTransparent": true, "locale": "en" }</script></div>
+        </div>
+    </div>
+    <div style="background:#000;">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        { "symbols": [{"proName":"OTC:HROEY","title":"HIROSE"},{"proName":"CAPITALCOM:COPPER","title":"COPPER"}], "colorTheme":"dark","isTransparent":true, "locale": "en" }
+        </script>
+    </div>
+</body>
+</html>
