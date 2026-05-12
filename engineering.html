@@ -5,22 +5,32 @@
     <title>HIROSE // MATERIALS LAB</title>
     <style>
         :root { --cyan: #00f2ff; --bg: #0a0c10; --panel: #11141b; }
-        body { margin: 0; background: var(--bg); color: #e6edf3; font-family: 'Courier New', monospace; display: grid; grid-template-rows: 60px 1fr 35px; height: 100vh; overflow: hidden; }
+        body { 
+            margin: 0; padding: 0; background: var(--bg); color: #e6edf3; font-family: 'Courier New', monospace; 
+            display: grid; grid-template-rows: 60px 1fr 35px; height: 100vh; overflow: hidden; 
+        }
         .header { background: #000; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--cyan); }
         .header img { height: 32px; filter: grayscale(1) brightness(1.5); }
         .main { display: grid; grid-template-columns: 420px 1fr; gap: 20px; padding: 20px; }
         .sidebar { background: var(--panel); border: 1px solid rgba(0,242,255,0.1); border-radius: 4px; display: flex; flex-direction: column; overflow: hidden; }
         .sidebar-header { padding: 12px; font-size: 11px; background: rgba(0,242,255,0.08); border-bottom: 1px solid rgba(0,242,255,0.1); color: var(--cyan); }
-        .blueprint { background-image: radial-gradient(rgba(0,242,255,0.05) 1px, transparent 1px); background-size: 25px 25px; border: 1px solid #222; position: relative; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
-        .media-frame { position: absolute; bottom: 20px; right: 20px; width: 450px; aspect-ratio: 16 / 9; background: #000; border: 1px solid var(--cyan); }
+        .blueprint-viewport { 
+            background-color: #0d1117; background-image: radial-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 25px 25px; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .media-box-large { width: 95%; aspect-ratio: 16 / 9; background: rgba(0,0,0,0.6); border: 1px solid var(--cyan); }
     </style>
 </head>
 <body>
-    <div class="header"><img src="Hirose Logo Stacked.png"><div style="color:var(--cyan); font-size:11px;">MATERIAL ANALYSIS // SPEC_REV_06</div></div>
+    <div class="header">
+        <img src="Hirose Logo Stacked.png">
+        <div style="color:var(--cyan); font-size:11px;">MATERIAL ANALYSIS // REV_09_LARGE</div>
+    </div>
     <div class="main">
         <div class="sidebar">
-            <div class="sidebar-header">Critical Engineering Minerals</div>
-            <div class="tradingview-widget-container" style="height: 100%;">
+            <div class="sidebar-header">CRITICAL ENGINEERING MINERALS</div>
+            <div class="tradingview-widget-container" id="tv-engineering-rev9">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
                 {
@@ -28,20 +38,26 @@
                     { "proName": "CAPITALCOM:COPPER", "title": "Copper (Cu)" },
                     { "proName": "CAPITALCOM:NICKEL", "title": "Nickel (Ni)" },
                     { "proName": "CAPITALCOM:ALUMINIUM", "title": "Aluminum (Al)" },
-                    { "proName": "AMEX:REMX", "title": "Rare Earth" }
+                    { "proName": "AMEX:REMX", "title": "Rare Earth (ETF)" }
                   ],
                   "showSymbolLogo": false, "colorTheme": "dark", "isTransparent": true, "locale": "en"
                 }
                 </script>
             </div>
         </div>
-        <div class="blueprint">
-            <div style="color: rgba(0, 242, 255, 0.1); font-size: 11px;">[ SCHEMATIC VIEWPORT ]</div>
-            <div class="media-frame"></div> <!-- SNAP VIDEO HERE -->
+        <div class="blueprint-viewport">
+            <div class="media-box-large">
+                <div style="font-size: 9px; color: var(--cyan); padding: 10px;">[ LARGE VIEWPORT: ACTIVE ]</div>
+            </div>
         </div>
     </div>
-    <div style="background:#000;"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-    { "symbols": [{"proName":"CAPITALCOM:COPPER","title":"COPPER"},{"proName":"CAPITALCOM:NICKEL","title":"NICKEL"}], "colorTheme":"dark","isTransparent":true }
-    </script></div>
+    <div style="background:#000;">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            { "symbols": [{"proName":"CAPITALCOM:COPPER","title":"COPPER"},{"proName":"AMEX:REMX","title":"RARE EARTH"}], "colorTheme":"dark","isTransparent":true, "locale": "en" }
+            </script>
+        </div>
+    </div>
 </body>
 </html>
