@@ -1,31 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>HIROSE GLOBAL LOGISTICS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIROSE GLOBAL LOGISTICS</title>
     <style>
-        body { margin: 0; background: #050a14; color: white; font-family: sans-serif; height: 100vh; display: grid; grid-template-rows: 80px 1fr 60px; }
-        .header { background: #000; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid #5B95F1; }
-        .main { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; padding: 20px; }
-        .clock-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 8px; text-align: center; border: 1px solid #5B95F1; }
-        .time { font-size: 48px; font-weight: bold; margin: 10px 0; color: #80B341; }
-        .city { text-transform: uppercase; letter-spacing: 2px; font-size: 14px; }
+        body {
+            margin: 0; padding: 0;
+            background-color: #050a14;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: grid;
+            grid-template-rows: 80px 1fr 60px; 
+        }
+
+        .header {
+            background-color: #000;
+            padding: 0 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 4px solid #5B95F1; 
+        }
+        .header img { height: 45px; }
+        .status-tag { color: #80B341; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr; /* Clocks on left, Map on right */
+            gap: 15px;
+            padding: 15px;
+            background: #111;
+        }
+
+        .left-column { display: flex; flex-direction: column; gap: 10px; }
+        
+        .clock-card {
+            background: #050a14;
+            border: 1px solid rgba(91, 149, 241, 0.2);
+            padding: 20px;
+            border-radius: 4px;
+            text-align: left;
+        }
+        .city-name { color: #5B95F1; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .time-display { font-size: 32px; font-weight: bold; color: #fff; margin-top: 5px; }
+
+        .map-panel {
+            background: #050a14;
+            border: 1px solid rgba(91, 149, 241, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        iframe { border: none; width: 100%; height: 100%; }
+        .footer { background: #000; display: flex; align-items: center; }
     </style>
 </head>
 <body>
+
     <div class="header">
-        <img src="Hirose Logo Stacked.png" height="50">
-        <div style="color:#80B341">● LOGISTICS STATUS: ON-TIME</div>
+        <img src="Hirose Logo Stacked.png" alt="Hirose">
+        <div class="status-tag">● LOGISTICS NETWORK: OPTIMAL</div>
     </div>
-    <div class="main">
-        <div class="clock-card"><div class="city">Chicago (HQ)</div><div class="time" id="chi">--:--</div></div>
-        <div class="clock-card"><div class="city">Tokyo</div><div class="time" id="tok">--:--</div></div>
-        <div class="clock-card"><div class="city">Amsterdam</div><div class="time" id="ams">--:--</div></div>
+
+    <div class="main-grid">
+        <!-- WORLD CLOCK COLUMN -->
+        <div class="left-column">
+            <div class="clock-card">
+                <div class="city-name">Chicago (HQ)</div>
+                <div class="time-display" id="chi">--:-- --</div>
+            </div>
+            <div class="clock-card">
+                <div class="city-name">Tokyo</div>
+                <div class="time-display" id="tok">--:-- --</div>
+            </div>
+            <div class="clock-card">
+                <div class="city-name">Amsterdam</div>
+                <div class="time-display" id="ams">--:-- --</div>
+            </div>
+        </div>
+
+        <!-- THE GLOBAL CONNECTION MAP -->
+        <div class="map-panel">
+            <!-- This shows the literal physical connections of the internet -->
+            <iframe src="https://www.submarinecablemap.com/"></iframe>
+        </div>
     </div>
-    <div style="background:#000; height:60px;">
-        <div class="tradingview-widget-container"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-        {"symbols": [{"proName": "NYSE:UPS","title": "UPS"},{"proName": "NYSE:FDX","title": "FedEx"},{"proName": "OTC:HROEY","title": "HIROSE"}],"colorTheme": "dark","isTransparent": true}
-        </script></div>
+
+    <div class="footer">
+        <div class="tradingview-widget-container" style="width: 100%;">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+                "symbols": [
+                    { "proName": "OTC:HROEY", "title": "HIROSE AMERICAS" },
+                    { "proName": "NYSE:UPS", "title": "UPS" },
+                    { "proName": "NYSE:FDX", "title": "FEDEX" },
+                    { "proName": "NYSE:MAERSK_A", "title": "MAERSK" }
+                ],
+                "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "en"
+            }
+            </script>
+        </div>
     </div>
+
     <script>
         function updateClocks() {
             const options = { hour: '2-digit', minute: '2-digit', hour12: true };
@@ -33,7 +112,8 @@
             document.getElementById('tok').innerHTML = new Date().toLocaleTimeString('en-US', { ...options, timeZone: 'Asia/Tokyo' });
             document.getElementById('ams').innerHTML = new Date().toLocaleTimeString('en-US', { ...options, timeZone: 'Europe/Amsterdam' });
         }
-        setInterval(updateClocks, 1000); updateClocks();
+        setInterval(updateClocks, 1000); 
+        updateClocks();
     </script>
 </body>
 </html>
