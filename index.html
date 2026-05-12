@@ -1,29 +1,143 @@
-<!-- Save as index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>HIROSE // COMMAND CENTER</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIROSE // COMMAND CENTER</title>
     <style>
-        body { margin: 0; background: #050a14; color: white; font-family: sans-serif; display: grid; grid-template-rows: 80px 1fr 60px; height: 100vh; overflow: hidden; }
-        .header { background: #000; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid #5B95F1; }
-        .dashboard { display: grid; grid-template-columns: 1.6fr 1fr; gap: 15px; padding: 15px; background: #111; align-items: center; }
-        .panel { background: #050a14; border: 1px solid rgba(91,149,241,0.2); border-radius: 4px; display: flex; flex-direction: column; height: 100%; overflow: hidden; }
-        .panel-header { padding: 10px 15px; font-size: 11px; font-weight: bold; color: #5B95F1; text-transform: uppercase; border-bottom: 1px solid rgba(91,149,241,0.2); }
-        .media-box { width: 100%; aspect-ratio: 16 / 9; border: 1px dashed rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); }
+        :root {
+            --hirose-blue: #5B95F1;
+            --bg-dark: #0a0c10;
+            --panel-bg: #11141b;
+            --text-dim: #7d8590;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg-dark);
+            color: #e6edf3;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: grid;
+            grid-template-rows: 60px 1fr 35px; /* Broadcast-safe scaling */
+        }
+
+        /* Scaled Header */
+        .header {
+            background-color: #000;
+            padding: 0 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid var(--hirose-blue);
+        }
+        .header img { height: 32px; }
+        .status-tag { font-size: 11px; color: #80B341; font-weight: 800; letter-spacing: 1.5px; }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr; /* Balanced layout */
+            gap: 20px;
+            padding: 20px;
+            align-items: center;
+        }
+
+        /* 16:9 Media Anchor */
+        .media-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .media-box-169 {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 1px solid rgba(91, 149, 241, 0.2);
+            background: rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .media-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
+
+        /* High-Reliability Metrics Sidebar */
+        .metrics-panel {
+            background: var(--panel-bg);
+            border-radius: 4px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .panel-header {
+            padding: 12px 15px;
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--hirose-blue);
+            text-transform: uppercase;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(91, 149, 241, 0.1);
+        }
+
+        .footer { background: #000; display: flex; align-items: center; }
     </style>
 </head>
 <body>
-    <div class="header"><img src="Hirose Logo Stacked.png" height="50"><div style="color:#80B341">● STATUS: ACTIVE</div></div>
-    <div class="dashboard">
-        <div class="panel">
-            <div class="panel-header">Featured Media (16:9)</div>
-            <div class="media-box"></div> <!-- LAYER YOUR VIDEO HERE -->
+
+    <div class="header">
+        <img src="Hirose Logo Stacked.png" alt="Hirose">
+        <div class="status-tag">● GLOBAL COMMAND: ONLINE</div>
+    </div>
+
+    <div class="main-layout">
+        <!-- LEFT: DEDICATED 16:9 MEDIA ZONE -->
+        <div class="media-container">
+            <div class="media-label">Broadcast Feed (16:9 Layer)</div>
+            <div class="media-box-169">
+                <!-- SNAP YOUR ONSIGNAGE VIDEO WIDGET HERE -->
+            </div>
         </div>
-        <div class="panel">
-            <div class="panel-header">Market Overview</div>
-            <iframe src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" style="width:100%;height:100%;"></iframe>
+
+        <!-- RIGHT: HIGH-RELIABILITY METRICS -->
+        <div class="metrics-panel">
+            <div class="panel-header">Market Intelligence</div>
+            <div class="tradingview-widget-container" style="height:100%;width:100%">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+                {
+                  "symbols": [
+                    { "proName": "OTC:HROEY", "title": "Hirose (Americas)" },
+                    { "proName": "CAPITALCOM:COPPER", "title": "Copper Spot" },
+                    { "proName": "NASDAQ:NVDA", "title": "NVIDIA" },
+                    { "proName": "NASDAQ:TSLA", "title": "Tesla" },
+                    { "proName": "NASDAQ:AAPL", "title": "Apple" }
+                  ],
+                  "showSymbolLogo": true,
+                  "colorTheme": "dark",
+                  "isTransparent": true,
+                  "locale": "en"
+                }
+                </script>
+            </div>
         </div>
     </div>
-    <div style="background:#000;"><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async></script></div>
+
+    <div class="footer">
+        <div class="tradingview-widget-container" style="width: 100%;">
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+                "symbols": [
+                    { "proName": "OTC:HROEY", "title": "HIROSE" },
+                    { "proName": "CAPITALCOM:COPPER", "title": "COPPER" },
+                    { "proName": "NASDAQ:NVDA", "title": "NVIDIA" },
+                    { "proName": "NASDAQ:TSLA", "title": "TESLA" }
+                ],
+                "colorTheme": "dark",
+                "isTransparent": true,
+                "displayMode": "adaptive",
+                "locale": "en"
+            }
+            </script>
+        </div>
+    </div>
+
 </body>
 </html>
